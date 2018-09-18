@@ -6,13 +6,13 @@ class Public extends Component {
 	
 
 	render() {
-		return () {
+		return (
             <div>
                 <h1>Public Page</h1>
             </div>
-        }
+        )
 
     }
 
-
+}
 export default Public

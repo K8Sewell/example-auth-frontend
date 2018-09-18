@@ -6,13 +6,14 @@ class Protected extends Component {
 	
 
 	render() {
-		return () {
+		return (
             <div>
                 <h1>Protected Page</h1>
             </div>
-        }
+        )
 
     }
 
+}
 
 export default Protected

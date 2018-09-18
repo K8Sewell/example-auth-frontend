@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Switch, Route, RedirectProps } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 import Register from './pages/Register'
 import AuthService from './services'
@@ -13,20 +13,21 @@ class App extends Component {
 		return (
 			<div>
 				<Router>
-				<Switch>
-					{(auth.loggedIn())
-					// if logged in
-					? <Switch>
-						<Route path="/public" component={Public} />
-						<Route path="/protected" component={Protected} />
-						<Route path="/register" component={Register} />
+					<Switch>
+						{(auth.loggedIn())
+						// if logged in
+						? <Switch>
+							<Route path="/public" component={Public} />
+							<Route path="/protected" component={Protected} />
+							<Route path="/register" component={Register} />
+						</Switch>
+						// if not logged in (ie Guest User)
+						: <Switch>
+							<Route path="/public" component={Public} />
+							<Redirect from="/protected" to="/register" />
+							<Route path="/register" component={Register} />
+						</Switch>}
 					</Switch>
-					// if not logged in (ie Guest User)
-					: <Switch>
-						<Route path="/public" component={Public} />
-						<Redirect from="/protected" to="/register" />
-						<Route path="/register" component={Register} />
-					</Switch>}
 				</Router>
 			</div>
 		);
